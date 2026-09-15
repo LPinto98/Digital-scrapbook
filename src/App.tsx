@@ -331,7 +331,7 @@ function ScrapbookOS() {
                    <h4 className="font-pixel text-2xl flex items-center gap-2">
                        <Dog size={24} /> FUTURE_LOG:
                    </h4>
-                   <p className="font-pixel text-xl italic">"Still waiting for that golden retriever... 🐶✨"</p>
+                   <p className="font-pixel text-xl italic">"Looking for new and exxciting opportunnites...✨"</p>
                    <div className="absolute -right-2 -bottom-2 w-12 h-12 opacity-50">
                       <svg viewBox="0 0 8 8" className="w-full h-full" style={{ imageRendering: 'pixelated' }}>
                         <rect x="1" y="2" width="5" height="4" fill="#E2B15D" />
