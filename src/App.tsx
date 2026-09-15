@@ -281,7 +281,7 @@ function ScrapbookOS() {
                         <div className="mt-4 max-w-sm">
                           <div 
                             onClick={() => setSelectedJourneyPhoto({
-                              src: '/esprofiler_launch.jpg',
+                              src: '/esprofiler_launch.png',
                               filename: 'ESPROFILER_BRAND_LAUNCH_DAY.PNG',
                               title: 'ESPROFILER BRAND LAUNCH DAY • ENGINEERING TEAM',
                               location: 'ESPROFILER HQ • MANCHESTER, UK',
