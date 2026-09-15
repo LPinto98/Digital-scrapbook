@@ -177,7 +177,7 @@ function ScrapbookOS() {
                             {/* Photo Container */}
                             <div className="relative aspect-[3/4] w-full overflow-hidden border-2 border-black bg-neutral-900 mt-1">
                               <img 
-                                src="/journey_india_uk.jpg" 
+                                src="./journey_india_uk.jpg" 
                                 alt="Leaving India for UK to start Masters - September 2022" 
                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                 referrerPolicy="no-referrer"

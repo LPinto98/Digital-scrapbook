@@ -59,7 +59,7 @@ export const AboutMeWindow: React.FC<AboutMeWindowProps> = ({
           {/* Profile Photo with Polaroid vibe */}
           <div 
             onClick={() => onOpenJourneyPhoto({
-              src: '/about_me.jpg',
+              src: './about_me.jpg',
               filename: 'LARISSA_PINTO_ABOUT_ME.JPG',
               title: 'LARISSA PINTO • DEVELOPER & MAKER',
               location: 'BATH, UK • THE ROYAL CRESCENT',
@@ -74,7 +74,7 @@ export const AboutMeWindow: React.FC<AboutMeWindowProps> = ({
             title="Click to view full photo"
           >
             <img 
-              src="/about_me.jpg" 
+              src="./about_me.jpg" 
               alt="Larissa Pinto - Developer & Maker" 
               className="w-full h-full object-cover object-[center_15%] group-hover:scale-105 transition-transform duration-300"
               referrerPolicy="no-referrer"
