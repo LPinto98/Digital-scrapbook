@@ -303,7 +303,7 @@ function ScrapbookOS() {
                             {/* Photo Container */}
                             <div className="relative aspect-[4/3] w-full overflow-hidden border-2 border-black bg-neutral-900 mt-1">
                               <img 
-                                src="/esprofiler_launch.jpg" 
+                                src="/esprofiler_launch.png" 
                                 alt="Larissa Pinto with team members on ESProfiler brand launch day" 
                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                 referrerPolicy="no-referrer"
