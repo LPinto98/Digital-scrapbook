@@ -1,0 +1,6 @@
+{
+  "name": "Larissa's Digital Scrapbook",
+  "description": "A cutesy, pastel-themed personal website for Larissa Pinto, featuring pixel art, yarn animations, a digital scrapbook, and an interactive GitHub projects and tech stack explorer for LPinto98.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=VT323&family=Press+Start+2P&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Quicksand", ui-sans-serif, system-ui, sans-serif;
+  --font-pixel: "VT323", monospace;
+  --font-gamers: "Press Start 2P", system-ui;
+
+  --color-pastel-pink: #ffd1dc;
+  --color-pastel-blue: #aec6cf;
+  --color-pastel-purple: #b39eb5;
+  --color-pastel-green: #77dd77;
+  --color-pastel-cream: #fffdd0;
+  --color-pastel-yellow: #fdfd96;
+}
+
+body {
+  @apply bg-[#b8ceff] text-gray-800 font-sans cursor-default overflow-hidden h-screen;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(255, 209, 220, 0.4) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(174, 198, 207, 0.4) 0%, transparent 40%),
+    linear-gradient(180deg, #b8ceff 0%, #e0f2fe 100%);
+  background-attachment: fixed;
+}
+
+.desktop-grid {
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.retro-window {
+  @apply bg-white border-4 border-black shadow-[8px_8px_0px_rgba(0,0,0,0.2)] overflow-hidden flex flex-col;
+}
+
+.retro-window-header {
+  @apply bg-pastel-pink border-b-4 border-black p-2 flex items-center justify-between;
+}
+
+.retro-close-btn {
+  @apply w-6 h-6 bg-white border-2 border-black flex items-center justify-center hover:bg-pastel-yellow active:translate-x-0.5 active:translate-y-0.5 shadow-[2px_2px_0px_black];
+}
+
+.crt-overlay {
+  @apply fixed inset-0 pointer-events-none z-[9999];
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.05), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.05));
+  background-size: 100% 2px, 3px 100%;
+}
+
+.btn-retro {
+  @apply px-4 py-2 bg-white border-4 border-black shadow-[4px_4px_0px_black] active:shadow-none active:translate-x-1 active:translate-y-1 transition-all font-pixel text-xl;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 border-l-4 border-black;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-pastel-purple border-4 border-black;
+}
+
+@keyframes scan {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(100%); }
+}
+
+.scanline {
+  @apply fixed top-0 left-0 w-full h-20 bg-white/5 z-[9998] pointer-events-none;
+  animation: scan 8s linear infinite;
+}
