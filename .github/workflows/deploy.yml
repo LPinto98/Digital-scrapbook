@@ -37,6 +37,9 @@ jobs:
       - name: Build static site
         run: npm run build
 
+      - name: Add .nojekyll file
+        run: touch ./dist/.nojekyll
+
       - name: Upload dist artifact
         uses: actions/upload-pages-artifact@v3
         with:
