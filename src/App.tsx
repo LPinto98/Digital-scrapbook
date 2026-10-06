@@ -28,7 +28,8 @@ import {
   Award,
   PartyPopper,
   Users,
-  Sparkles
+  Sparkles,
+  Languages
 } from 'lucide-react';
 import { Window, DesktopIcon } from './components/RetroUI.tsx';
 import { YarnCatcher } from './components/YarnGame.tsx';
@@ -36,6 +37,7 @@ import { MusicPlayer } from './components/MusicPlayer.tsx';
 import { ProjectsWindow } from './components/ProjectsWindow.tsx';
 import { TechStackWindow } from './components/TechStackWindow.tsx';
 import { AboutMeWindow } from './components/AboutMeWindow.tsx';
+import { LanguagesWindow, Flag } from './components/LanguagesWindow.tsx';
 import { MusicProvider, useMusic } from './context/MusicContext.tsx';
 import { TaskbarMusicApp } from './components/TaskbarMusicApp.tsx';
 
@@ -427,6 +429,22 @@ function ScrapbookOS() {
             <TechStackWindow />
           </Window>
         );
+      case 'languages':
+        return (
+          <Window 
+            key="languages"
+            title="LANGUAGE_MANAGER.EXE" 
+            headerColor="bg-pastel-blue"
+            onClose={() => closeWindow('languages')}
+            onMinimize={() => closeWindow('languages')}
+            isMaximized={isMax}
+            onToggleMaximize={() => toggleMaximizeWindow('languages')}
+            onMouseDown={onFocus}
+            className={`w-[92vw] md:w-[720px] h-[560px] absolute ${isActive ? 'z-50 shadow-[12px_12px_0px_rgba(0,0,0,0.4)]' : 'z-10'} top-10 left-3 md:top-16 md:left-64`}
+          >
+            <LanguagesWindow />
+          </Window>
+        );
       case 'game':
         return (
           <Window 
@@ -620,6 +638,15 @@ function ScrapbookOS() {
                     <Gamepad2 size={16} /> PLAY GAME
                 </button>
 
+                <button onClick={() => { toggleWindow('languages'); setStartMenuOpen(false); }} className="w-full text-left p-2 hover:bg-pastel-blue font-pixel text-lg flex items-center justify-between">
+                    <span className="flex items-center gap-2">
+                      <Languages size={16} /> LANGUAGES
+                    </span>
+                    <span className="bg-white border border-black text-[10px] px-1.5 py-0.5 flex items-center gap-1 font-pixel shadow-[1px_1px_0px_black]">
+                      <Pin size={9} className="text-pastel-blue fill-pastel-blue rotate-45" /> PINNED
+                    </span>
+                </button>
+
                 {/* Pinned Music in Start Menu */}
                 <button 
                   onClick={() => { 
@@ -672,12 +699,39 @@ function ScrapbookOS() {
           <TaskbarMusicApp />
         </div>
 
+        {/* Pinned Quick Launch App: Language Manager */}
+        <button
+          onClick={() => {
+            if (activeWindow === 'languages' && openWindows.includes('languages')) {
+              closeWindow('languages');
+            } else {
+              toggleWindow('languages');
+            }
+          }}
+          title="Pinned: Language Manager"
+          aria-label="Open Language Manager"
+          className={`relative shrink-0 h-9 w-11 border-2 border-black flex items-center justify-center transition-colors
+            ${openWindows.includes('languages') ? 'bg-pastel-blue shadow-none translate-y-0.5' : 'bg-gray-100 hover:bg-pastel-blue/40 shadow-[2px_2px_0px_black]'}
+          `}
+        >
+          <Languages size={18} />
+          <span className="absolute -top-1.5 -right-1.5 bg-white border border-black rounded-full p-0.5 shadow-[1px_1px_0px_black]">
+            <Pin size={8} className="text-pastel-blue fill-pastel-blue rotate-45" />
+          </span>
+          <span className="absolute bottom-0.5 left-0.5">
+            <Flag kind="india" className="w-2.5 h-[7px]" />
+          </span>
+          {openWindows.includes('languages') && (
+            <span className="absolute -bottom-[5px] left-1/2 -translate-x-1/2 w-4 h-[3px] bg-black" />
+          )}
+        </button>
+
         {/* Embossed Vertical Divider */}
         <div className="w-0.5 h-6 bg-black/20 hidden sm:block shrink-0" />
 
         {/* Running Windows Tabs (Filter out music unless detached) */}
         <div className="flex-1 flex gap-2 overflow-x-auto h-full items-center">
-            {openWindows.filter(id => id !== 'music' || isDetached).map(id => (
+            {openWindows.filter(id => (id !== 'music' || isDetached) && id !== 'languages').map(id => (
                 <button 
                   key={id}
                   onClick={() => setActiveWindow(id)}
