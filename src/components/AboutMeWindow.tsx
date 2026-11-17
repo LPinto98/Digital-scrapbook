@@ -135,13 +135,13 @@ export const AboutMeWindow: React.FC<AboutMeWindowProps> = ({
               >
                 <Github size={14} /> GITHUB
               </a>
-              <a 
-                href="mailto:larissapinto98@gmail.com" 
-                className="px-2.5 py-1 border-2 border-black bg-white hover:bg-pastel-green flex items-center gap-1 font-pixel text-xs shadow-[2px_2px_0px_black] active:translate-x-0.5 active:translate-y-0.5 transition-colors"
+              <button 
+                onClick={() => onOpenWindow('contact')} 
+                className="px-2.5 py-1 border-2 border-black bg-white hover:bg-pastel-green flex items-center gap-1 font-pixel text-xs shadow-[2px_2px_0px_black] active:translate-x-0.5 active:translate-y-0.5 transition-colors cursor-pointer"
                 onMouseDown={(e) => e.stopPropagation()}
               >
-                <Mail size={14} className="text-green-700" /> EMAIL
-              </a>
+                <Mail size={14} className="text-green-700" /> CONTACT
+              </button>
               <button 
                 onClick={() => onOpenWindow('techstack')} 
                 className="px-2.5 py-1 border-2 border-black bg-pastel-purple text-white hover:bg-purple-600 flex items-center gap-1 font-pixel text-xs shadow-[2px_2px_0px_black] active:translate-x-0.5 active:translate-y-0.5 transition-colors cursor-pointer" 

@@ -40,6 +40,9 @@ import { AboutMeWindow } from './components/AboutMeWindow.tsx';
 import { LanguagesWindow, Flag } from './components/LanguagesWindow.tsx';
 import { MusicProvider, useMusic } from './context/MusicContext.tsx';
 import { TaskbarMusicApp } from './components/TaskbarMusicApp.tsx';
+import { ContactWindow } from './components/ContactWindow.tsx';
+
+const isContactPath = () => window.location.pathname.replace(/\/+$/, '') === '/contact';
 
 export interface JourneyPhotoModal {
   src: string;
@@ -55,8 +58,8 @@ export interface JourneyPhotoModal {
 }
 
 function ScrapbookOS() {
-  const [openWindows, setOpenWindows] = useState<string[]>(['about']);
-  const [activeWindow, setActiveWindow] = useState('about');
+  const [openWindows, setOpenWindows] = useState<string[]>(() => (isContactPath() ? ['about', 'contact'] : ['about']));
+  const [activeWindow, setActiveWindow] = useState(() => (isContactPath() ? 'contact' : 'about'));
   const [maximizedWindows, setMaximizedWindows] = useState<string[]>([]);
   const [startMenuOpen, setStartMenuOpen] = useState(false);
   const [selectedJourneyPhoto, setSelectedJourneyPhoto] = useState<JourneyPhotoModal | null>(null);
@@ -72,6 +75,29 @@ function ScrapbookOS() {
       setOpenWindows(prev => prev.filter(w => w !== 'music'));
     }
   }, [isDetached]);
+
+  // Keep the /contact URL in sync with the contact window
+  useEffect(() => {
+    const contactOpen = openWindows.includes('contact');
+    if (contactOpen && !isContactPath()) {
+      window.history.pushState(null, '', '/contact');
+    } else if (!contactOpen && isContactPath()) {
+      window.history.pushState(null, '', '/');
+    }
+  }, [openWindows]);
+
+  useEffect(() => {
+    const onPopState = () => {
+      if (isContactPath()) {
+        setOpenWindows(prev => (prev.includes('contact') ? prev : [...prev, 'contact']));
+        setActiveWindow('contact');
+      } else {
+        setOpenWindows(prev => prev.filter(w => w !== 'contact'));
+      }
+    };
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, []);
 
   const toggleWindow = (id: string) => {
     if (openWindows.includes(id)) {
@@ -461,6 +487,22 @@ function ScrapbookOS() {
             <YarnCatcher />
           </Window>
         );
+      case 'contact':
+        return (
+          <Window 
+            key="contact"
+            title="CONTACT_ME.EML" 
+            headerColor="bg-pastel-green"
+            onClose={() => closeWindow('contact')}
+            onMinimize={() => closeWindow('contact')}
+            isMaximized={isMax}
+            onToggleMaximize={() => toggleMaximizeWindow('contact')}
+            onMouseDown={onFocus}
+            className={`w-[94vw] md:w-[640px] h-[620px] max-h-[calc(100vh-4rem)] absolute ${isActive ? 'z-50 shadow-[12px_12px_0px_rgba(0,0,0,0.4)]' : 'z-10'} top-4 left-2 md:top-12 md:left-[22rem]`}
+          >
+            <ContactWindow />
+          </Window>
+        );
       case 'music':
         return (
           <Window 
@@ -569,6 +611,11 @@ function ScrapbookOS() {
           onClick={(e) => { e.stopPropagation(); toggleWindow('hobbies'); }} 
         />
         <DesktopIcon 
+          icon={<Mail className="text-pastel-green" size={32}/>} 
+          label="CONTACT" 
+          onClick={(e) => { e.stopPropagation(); toggleWindow('contact'); }} 
+        />
+        <DesktopIcon 
           icon={<Gamepad2 className="text-pastel-purple" size={32}/>} 
           label="GAME.CMD" 
           onClick={(e) => { e.stopPropagation(); toggleWindow('game'); }} 
@@ -667,6 +714,10 @@ function ScrapbookOS() {
                     </span>
                 </button>
 
+                <button onClick={() => { toggleWindow('contact'); setStartMenuOpen(false); }} className="w-full text-left p-2 hover:bg-pastel-green font-pixel text-lg flex items-center gap-2">
+                    <Mail size={16} /> CONTACT ME
+                </button>
+
                 <div className="h-1 bg-black/10 my-2" />
                 <a 
                   href="https://github.com/LPinto98" 
@@ -675,6 +726,14 @@ function ScrapbookOS() {
                   className="w-full text-left p-2 hover:bg-black hover:text-white font-pixel text-lg flex items-center gap-2"
                 >
                     <Github size={16} /> GITHUB: @LPINTO98
+                </a>
+                <a 
+                  href="https://linkedin.com/in/larissa-pinto" 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="w-full text-left p-2 hover:bg-[#0077b5] hover:text-white font-pixel text-lg flex items-center gap-2"
+                >
+                    <Linkedin size={16} /> CONNECT ON LINKEDIN
                 </a>
                 <button className="w-full text-left p-2 hover:bg-red-400 hover:text-white font-pixel text-lg flex items-center gap-2 opacity-50 cursor-not-allowed">
                     <Square size={16} /> SHUTDOWN
