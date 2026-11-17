@@ -205,7 +205,7 @@ export const AboutMeWindow: React.FC<AboutMeWindowProps> = ({
                   Engineering Quality Initiative: The Test Coverage Crusade 🛡️
                 </p>
                 <p className="font-pixel text-base sm:text-lg text-gray-700 leading-snug">
-                  Apart from and on top of all my normal daily feature development and sprint tasks, I took the proactive initiative to set up automated GitHub CI/CD workflows for PR coverage checks, elevating our backend unit test coverage from <span className="font-bold text-red-700">4%</span> all the way to <span className="font-bold text-green-700">30%</span> in 7 months. Bugs belong in jars, not in production.
+                  Apart from and on top of all my normal daily feature development and sprint tasks, I took the proactive initiative to set up automated GitHub CI/CD workflows for PR coverage checks, elevating our backend unit test coverage from <span className="font-bold text-red-700">4%</span> all the way to <span className="font-bold text-green-700">85%</span> in 7 months. Bugs belong in jars, not in production.
                 </p>
               </div>
 
@@ -302,7 +302,7 @@ export const AboutMeWindow: React.FC<AboutMeWindowProps> = ({
                   <span>CI/CD & TEST COVERAGE CRUSADE</span>
                 </div>
                 <p className="font-pixel text-base text-gray-700 leading-snug">
-                  Apart from and alongside all standard feature deliverables, spearheaded automated GitHub Workflows for PR coverage gates, boosting codebase test coverage from <span className="font-bold text-red-700">4%</span> to <span className="font-bold text-green-800">30%</span> in 7 months with JUnit & Mockito.
+                  Apart from and alongside all standard feature deliverables, spearheaded automated GitHub Workflows for PR coverage gates, boosting codebase test coverage from <span className="font-bold text-red-700">4%</span> to <span className="font-bold text-green-800">85%</span> in 7 months with JUnit & Mockito.
                 </p>
                 <div className="pt-1 flex flex-wrap gap-1">
                   {['JUnit', 'Mockito', 'GitHub Actions', 'TDD', 'CI/CD'].map((tag) => (
@@ -368,7 +368,7 @@ export const AboutMeWindow: React.FC<AboutMeWindowProps> = ({
               </div>
               <p className="font-pixel text-base font-bold text-pastel-purple mb-1">Backend Developer</p>
               <ul className="font-pixel text-sm sm:text-base text-gray-700 space-y-1 list-disc list-inside">
-                <li>Proactively drove engineering standards apart from regular daily feature work: created automated GitHub Workflows for PR coverage gates, driving backend unit test coverage from 4% to 30%.</li>
+                <li>Proactively drove engineering standards apart from regular daily feature work: created automated GitHub Workflows for PR coverage gates, driving backend unit test coverage from 4% to 85%.</li>
                 <li>Built generative AI backend REST APIs using Java 21/25 and Spring AI (Gemini) for platform microservices.</li>
                 <li>Integrated RabbitMQ message broker for decoupled asynchronous service communication under load.</li>
                 <li>Configured OpenTelemetry, Prometheus, and Grafana for full observability; crafted Vaadin admin UIs.</li>

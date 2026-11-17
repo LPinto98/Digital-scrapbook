@@ -548,10 +548,10 @@ export const TechStackWindow: React.FC = () => {
                 </div>
                 <div className="flex-1">
                   <h3 className="font-gamers text-lg text-black mb-1">
-                    IEEE Research Article: Named Entity Recognition in Kannada Language using Conditional Random Fields
+                    IEEE Research Article: Personality Assessment Using Social Media for Hiring Candidates
                   </h3>
                   <p className="font-pixel text-xs text-gray-700 leading-relaxed mb-3">
-                    Co-authored with fellow researchers and published in IEEE Xplore. Features advanced Natural Language Processing (NLP) pipeline, Kannada script POS tagging, feature extraction, and CRF sequential prediction for historical & contemporary texts.
+                    Co-authored with fellow researchers and published in IEEE Xplore. Features a web system that predicts a job candidate’s personality from their tweets and resume. It shows the employer MBTI and Big Five (OCEAN) results, plus general suitable job roles. It targets third-year college students, with data permission taken from each candidate. The aim is to help shortlist applicants more consistently than a single interview, and to avoid long questionnaires.
                   </p>
                   <div className="flex flex-wrap gap-2">
                     <a
@@ -561,14 +561,6 @@ export const TechStackWindow: React.FC = () => {
                       className="font-pixel text-xs bg-black text-white px-3 py-1.5 border-2 border-black flex items-center gap-1.5 hover:bg-gray-800 shadow-[2px_2px_0px_black]"
                     >
                       <ExternalLink size={12} /> OPEN IN IEEE XPLORE
-                    </a>
-                    <a
-                      href="https://github.com/LPinto98/NER-in-Kannada-using-CRF-for-Historical-Text"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="font-pixel text-xs bg-white text-black px-3 py-1.5 border-2 border-black flex items-center gap-1.5 hover:bg-yellow-50 shadow-[2px_2px_0px_black]"
-                    >
-                      <Github size={12} /> VIEW NER GITHUB REPO
                     </a>
                   </div>
                 </div>
